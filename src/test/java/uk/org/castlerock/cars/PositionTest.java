@@ -4,11 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class PositionTests {
+public class PositionTest {
 	
 	@Test
 	public void whenAPositionIsCreatedItCanPrintItsCoordinates(){
-		assertTrue(true);
+		Position aPosition = new Position(7,9);
+		assertEquals("(7,9)",aPosition.toString());
 	}
 
 }
