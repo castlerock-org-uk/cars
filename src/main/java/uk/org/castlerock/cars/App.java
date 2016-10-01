@@ -23,7 +23,7 @@ public class App
     {
     	
     	//*** add regex check to check format of input string 
-    	System.out.println("Your car has moved to: " + TestUtils.driveCar(args[0]));
+    	System.out.println(TestUtils.driveCar(args[0]));
     }
     
     
