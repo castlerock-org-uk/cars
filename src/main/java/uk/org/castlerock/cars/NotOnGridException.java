@@ -1,13 +1,13 @@
 package uk.org.castlerock.cars;
 
-public class NotInWorldException extends Exception {
+public class NotOnGridException extends Exception {
 
 	private static final long serialVersionUID = 5684228303502608814L;
 
-	public NotInWorldException() {
+	public NotOnGridException() {
 	}
 
-	public NotInWorldException(String message) {
+	public NotOnGridException(String message) {
 		super(message);
 	}
 

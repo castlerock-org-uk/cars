@@ -8,101 +8,101 @@ import org.junit.Test;
 
 public class CarTest {
 
-	World world;
+	Grid grid;
 
 	@Before
-	public void createWorld() {
-		world = new World(15, 15);
+	public void createGrid() {
+		grid = new Grid(15, 15);
 	}
 
-	@Test(expected = NotInWorldException.class)
-	public void whenNewCarIsCreatedOutsideTheBoundariesOfTheKnownWorldThenAnExceptionIsThrown()
-			throws NotInWorldException {
+	@Test(expected = NotOnGridException.class)
+	public void whenNewCarIsCreatedOutsideTheBoundariesOfTheGridThenAnExceptionIsThrown()
+			throws NotOnGridException {
 		Position position = new Position(20, 20);
 		@SuppressWarnings("unused")
-		Car car = new Car(world, position, Direction.N);
+		Car car = new Car(grid, position, Direction.N);
 	}
 
-	@Test(expected = NotInWorldException.class)
-	public void whenNewCarIsCreatedOutsideTheNorthOfTheKnownWorldThenAnExceptionIsThrown() throws NotInWorldException {
+	@Test(expected = NotOnGridException.class)
+	public void whenNewCarIsCreatedOutsideTheNorthOfTheGridThenAnExceptionIsThrown() throws NotOnGridException {
 		Position position = new Position(5, 20);
 		@SuppressWarnings("unused")
-		Car car = new Car(world, position, Direction.N);
+		Car car = new Car(grid, position, Direction.N);
 	}
 
-	@Test(expected = NotInWorldException.class)
-	public void whenNewCarIsCreatedOutsideTheEastOfTheKnownWorldThenAnExceptionIsThrown() throws NotInWorldException {
+	@Test(expected = NotOnGridException.class)
+	public void whenNewCarIsCreatedOutsideTheEastOfTheGridThenAnExceptionIsThrown() throws NotOnGridException {
 		Position position = new Position(20, 5);
 		@SuppressWarnings("unused")
-		Car car = new Car(world, position, Direction.N);
+		Car car = new Car(grid, position, Direction.N);
 	}
 
-	@Test(expected = NotInWorldException.class)
-	public void whenNewCarIsCreatedOutsideTheSouthOfTheKnownWorldThenAnExceptionIsThrown() throws NotInWorldException {
+	@Test(expected = NotOnGridException.class)
+	public void whenNewCarIsCreatedOutsideTheSouthOfTheGridThenAnExceptionIsThrown() throws NotOnGridException {
 		Position position = new Position(20, -1);
 		@SuppressWarnings("unused")
-		Car car = new Car(world, position, Direction.N);
+		Car car = new Car(grid, position, Direction.N);
 	}
 
-	@Test(expected = NotInWorldException.class)
-	public void whenNewCarIsCreatedOutsideTheWestOfTheKnownWorldThenAnExceptionIsThrown() throws NotInWorldException {
+	@Test(expected = NotOnGridException.class)
+	public void whenNewCarIsCreatedOutsideTheWestOfTheGridThenAnExceptionIsThrown() throws NotOnGridException {
 		Position position = new Position(-1, 20);
 		@SuppressWarnings("unused")
-		Car car = new Car(world, position, Direction.N);
+		Car car = new Car(grid, position, Direction.N);
 	}
 
 	@Test
-	public void whenCarIsFacingNorthAndReceivesCommandToTurnRightThenItWillBeFacingEast() throws NotInWorldException {
+	public void whenCarIsFacingNorthAndReceivesCommandToTurnRightThenItWillBeFacingEast() throws NotOnGridException {
 		Position position = new Position(5, 5);
-		Car car = new Car(world, position, Direction.N);
+		Car car = new Car(grid, position, Direction.N);
 		car.turn(TurnCommand.R);
 		assertThat(car.getDirection(), is(Direction.E));
 	}
 
 	@Test
-	public void whenCarIsFacingNorthAndReceivesCommandToTurnLeftThenItWillBeFacingWest() throws NotInWorldException {
+	public void whenCarIsFacingNorthAndReceivesCommandToTurnLeftThenItWillBeFacingWest() throws NotOnGridException {
 		Position position = new Position(5, 5);
-		Car car = new Car(world, position, Direction.N);
+		Car car = new Car(grid, position, Direction.N);
 		car.turn(TurnCommand.L);
 		assertThat(car.getDirection(), is(Direction.W));
 	}
 
 	@Test
-	public void whenCarMovesForwardNorthThenYCoordinateIncreasesByOne() throws NotInWorldException {
+	public void whenCarMovesForwardNorthThenYCoordinateIncreasesByOne() throws NotOnGridException {
 		Position position = new Position(5, 5);
-		Car car = new Car(world, position, Direction.N);
+		Car car = new Car(grid, position, Direction.N);
 		car.forward();
 		assertEquals("(5,6)", car.getPosition().toString());
 	}
 
 	@Test
-	public void whenCarMovesForwardEastThenXCoordinateIncreasesByOne() throws NotInWorldException {
+	public void whenCarMovesForwardEastThenXCoordinateIncreasesByOne() throws NotOnGridException {
 		Position position = new Position(5, 5);
-		Car car = new Car(world, position, Direction.E);
+		Car car = new Car(grid, position, Direction.E);
 		car.forward();
 		assertEquals("(6,5)", car.getPosition().toString());
 	}
 
 	@Test
-	public void whenCarMovesForwardSouthThenYCoordinateDecreasesByOne() throws NotInWorldException {
+	public void whenCarMovesForwardSouthThenYCoordinateDecreasesByOne() throws NotOnGridException {
 		Position position = new Position(5, 5);
-		Car car = new Car(world, position, Direction.S);
+		Car car = new Car(grid, position, Direction.S);
 		car.forward();
 		assertEquals("(5,4)", car.getPosition().toString());
 	}
 
 	@Test
-	public void whenCarMovesForwardWestThenXCoordinateDecreasesByOne() throws NotInWorldException {
+	public void whenCarMovesForwardWestThenXCoordinateDecreasesByOne() throws NotOnGridException {
 		Position position = new Position(5, 5);
-		Car car = new Car(world, position, Direction.W);
+		Car car = new Car(grid, position, Direction.W);
 		car.forward();
 		assertEquals("(4,5)", car.getPosition().toString());
 	}
 
 	@Test
-	public void whenCarHitsTheNorthEdgeOfTheWorldThenItGoesNoFurther() throws NotInWorldException {
+	public void whenCarHitsTheNorthEdgeOfTheGridThenItGoesNoFurther() throws NotOnGridException {
 		Position position = new Position(5, 14);
-		Car car = new Car(world, position, Direction.N);
+		Car car = new Car(grid, position, Direction.N);
 		car.forward();
 		car.forward();
 		car.forward();
@@ -110,9 +110,9 @@ public class CarTest {
 	}
 
 	@Test
-	public void whenCarHitsTheEastEdgeOfTheWorldThenItGoesNoFurhter() throws NotInWorldException {
+	public void whenCarHitsTheEastEdgeOfTheGridThenItGoesNoFurhter() throws NotOnGridException {
 		Position position = new Position(14, 5);
-		Car car = new Car(world, position, Direction.E);
+		Car car = new Car(grid, position, Direction.E);
 		car.forward();
 		car.forward();
 		car.forward();
@@ -120,9 +120,9 @@ public class CarTest {
 	}
 
 	@Test
-	public void whenCarHitsTheSouthEdgeOfTheWorldThenItGoesNoFurhter() throws NotInWorldException {
+	public void whenCarHitsTheSouthEdgeOfTheGridThenItGoesNoFurhter() throws NotOnGridException {
 		Position position = new Position(5, 1);
-		Car car = new Car(world, position, Direction.S);
+		Car car = new Car(grid, position, Direction.S);
 		car.forward();
 		car.forward();
 		car.forward();
@@ -130,9 +130,9 @@ public class CarTest {
 	}
 
 	@Test
-	public void whenCarHitsTheWestEdgeOfTheWorldItGoesNoFurther() throws NotInWorldException {
+	public void whenCarHitsTheWestEdgeOfTheGridItGoesNoFurther() throws NotOnGridException {
 		Position position = new Position(1, 5);
-		Car car = new Car(world, position, Direction.W);
+		Car car = new Car(grid, position, Direction.W);
 		car.forward();
 		car.forward();
 		car.forward();

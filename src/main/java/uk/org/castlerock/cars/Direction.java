@@ -1,11 +1,9 @@
 package uk.org.castlerock.cars;
 
 /**
- * @author scottchamberlain
- * 
- * Enum to represent direction as cardinal points, 
- * including two methods next() to move clockwise
- * around the compass and previous() to move
+ * Represents direction as cardinal points, 
+ * including two methods {@link #next() next} to move clockwise
+ * around the compass and {@link #previous()} to move
  * anticlockwise.
  *
  */

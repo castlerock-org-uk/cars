@@ -28,7 +28,12 @@ public class AppTest {
 	
     /*
 	 * For the input "5,5:FLFLFFRFFF"
-	 * We should get the position "4,1"
+	 * We should get the position "1,4"
+	 * 
+	 * spec supplied said this should return 4,1 which would mean 
+	 * the y coordinate was first. I think this may be a mistake.
+	 * If not and the y coordinate really should be first it's very easy to change.
+	 * 
 	 */
 	@Test
 	public void ThirdDrivingTest() {

@@ -1,5 +1,6 @@
 package uk.org.castlerock.cars;
 
+
 public class Position {
 	
 	private final int xCoordinate;

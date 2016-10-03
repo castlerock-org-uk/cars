@@ -2,12 +2,11 @@ package uk.org.castlerock.cars;
 
 
 /**
- * @author scottchamberlain
- * Class to model a car that drives in the {@link uk.org.castlerock.cars.World}
+ * Models a car that drives in the {@link uk.org.castlerock.cars.Grid}
  * The Car has a {@link uk.org.castlerock.cars.Position} and a {@link uk.org.castlerock.cars.Direction}
- * It has a method turn() to make it turn either left or right, it turns on the spot so is probably a tracked vehicle.
- * It has a method forward() to make it move forward in the direction it is facing.
- * The car cannot move outside the boundaries of the world but it doesn't explode or drift into space when it gets to
+ * It has a {@link #turn(TurnCommand) turn} method to make it turn either left or right, it turns on the spot so is probably a tracked vehicle.
+ * It has a {@link #forward() forward} method to make it move forward in the direction it is facing.
+ * The car cannot move outside the boundaries of the grid but it doesn't explode or drift into space when it gets to
  * the edge of the world, it just won't go any further.
  * 
  */
@@ -15,15 +14,15 @@ public class Car {
 	
 	private Position position;
 	private Direction direction;
-	private World world;
+	private Grid grid;
 	
-	public Car(World world, Position position, Direction direction) throws NotInWorldException {
-		if(!world.inWorld(position)){
-			throw new NotInWorldException();
+	public Car(Grid grid, Position position, Direction direction) throws NotOnGridException {
+		if(!grid.isPositionOnGrid(position)){
+			throw new NotOnGridException();
 		} else {
 			this.position = position;
 			this.direction = direction;
-			this.world = world;
+			this.grid = grid;
 		}
 	}
 	
@@ -38,28 +37,28 @@ public class Car {
 	public void forward(){
 		
 		if(this.direction == Direction.N){
-			if(!world.hitNorthBoundary(this.position)){
+			if(!grid.isPositionAtNorthBoundary(this.position)){
 				Position newPosition = new Position(this.position.getXCoordinate(),this.position.getYCoordinate()+1);
 				this.position = newPosition;
 			}
 		}
 		
 		if(this.direction == Direction.E){
-			if(!world.hitEastBoundary(this.position)){
+			if(!grid.isPositionAtEastBoundary(this.position)){
 				Position newPosition = new Position(this.position.getXCoordinate()+1,this.position.getYCoordinate());
 				this.position = newPosition;
 			}
 		}
 		
 		if(this.direction == Direction.S){
-			if(!world.hitSouthBoundary(this.position)){
+			if(!grid.isPositionAtSouthBoundary(this.position)){
 				Position newPosition = new Position(this.position.getXCoordinate(),this.position.getYCoordinate()-1);
 				this.position = newPosition;
 			}
 		}
 		
 		if(this.direction == Direction.W){
-			if(!world.hitWestBoundary(this.position)){
+			if(!grid.isPsoitionAtWestBoundary(this.position)){
 				Position newPosition = new Position(this.position.getXCoordinate()-1,this.position.getYCoordinate());
 				this.position = newPosition;
 			}
