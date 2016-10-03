@@ -21,7 +21,9 @@ public class Position {
 
 	@Override
 	public String toString() {
-		return "(" + xCoordinate + "," + yCoordinate + ")";
+		//y coordinate is first which is unusual but the
+		//spec seems to dictate it
+		return yCoordinate + "," + xCoordinate;
 	}
 	
 	

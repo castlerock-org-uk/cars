@@ -72,7 +72,7 @@ public class CarTest {
 		Position position = new Position(5, 5);
 		Car car = new Car(grid, position, Direction.N);
 		car.forward();
-		assertEquals("(5,6)", car.getPosition().toString());
+		assertEquals("6,5", car.getPosition().toString());
 	}
 
 	@Test
@@ -80,7 +80,7 @@ public class CarTest {
 		Position position = new Position(5, 5);
 		Car car = new Car(grid, position, Direction.E);
 		car.forward();
-		assertEquals("(6,5)", car.getPosition().toString());
+		assertEquals("5,6", car.getPosition().toString());
 	}
 
 	@Test
@@ -88,7 +88,7 @@ public class CarTest {
 		Position position = new Position(5, 5);
 		Car car = new Car(grid, position, Direction.S);
 		car.forward();
-		assertEquals("(5,4)", car.getPosition().toString());
+		assertEquals("4,5", car.getPosition().toString());
 	}
 
 	@Test
@@ -96,7 +96,7 @@ public class CarTest {
 		Position position = new Position(5, 5);
 		Car car = new Car(grid, position, Direction.W);
 		car.forward();
-		assertEquals("(4,5)", car.getPosition().toString());
+		assertEquals("5,4", car.getPosition().toString());
 	}
 
 	@Test
@@ -106,7 +106,7 @@ public class CarTest {
 		car.forward();
 		car.forward();
 		car.forward();
-		assertEquals("(5,15)", car.getPosition().toString());
+		assertEquals("15,5", car.getPosition().toString());
 	}
 
 	@Test
@@ -116,7 +116,7 @@ public class CarTest {
 		car.forward();
 		car.forward();
 		car.forward();
-		assertEquals("(15,5)", car.getPosition().toString());
+		assertEquals("5,15", car.getPosition().toString());
 	}
 
 	@Test
@@ -126,7 +126,7 @@ public class CarTest {
 		car.forward();
 		car.forward();
 		car.forward();
-		assertEquals("(5,0)", car.getPosition().toString());
+		assertEquals("0,5", car.getPosition().toString());
 	}
 
 	@Test
@@ -136,7 +136,7 @@ public class CarTest {
 		car.forward();
 		car.forward();
 		car.forward();
-		assertEquals("(0,5)", car.getPosition().toString());
+		assertEquals("5,0", car.getPosition().toString());
 	}
 
 }

@@ -14,7 +14,7 @@ public class AppTest {
 	 */
 	@Test
 	public void FirstDrivingTest() {
-		assertEquals("(7,7)",TestUtils.driveCar("5,5:RFLFRFLF"));
+		assertEquals("7,7",TestUtils.driveCar("5,5:RFLFRFLF"));
 	}
 	
 	/*
@@ -23,21 +23,20 @@ public class AppTest {
 	 */
 	@Test
 	public void SecondDrivingTest() {
-		assertEquals("(6,6)",TestUtils.driveCar("6,6:FFLFFLFFLFF"));
+		assertEquals("6,6",TestUtils.driveCar("6,6:FFLFFLFFLFF"));
 	}
 	
     /*
 	 * For the input "5,5:FLFLFFRFFF"
-	 * We should get the position "1,4"
+	 * We should get the position "4,1"
 	 * 
-	 * spec supplied said this should return 4,1 which would mean 
-	 * the y coordinate was first. I think this may be a mistake.
-	 * If not and the y coordinate really should be first it's very easy to change.
+	 * This test dictates that the y coordinate is first in the returned output.
+	 * which seems unusual.
 	 * 
 	 */
 	@Test
 	public void ThirdDrivingTest() {
-		assertEquals("(1,4)",TestUtils.driveCar("5,5:FLFLFFRFFF"));
+		assertEquals("4,1",TestUtils.driveCar("5,5:FLFLFFRFFF"));
 	}
 
 }
